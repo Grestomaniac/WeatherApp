@@ -1,10 +1,11 @@
-package com.example.weatherapp.ui.main
+package com.example.weatherapp.ui.mainScreen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class MainScreenViewModel : ViewModel() {
+    //live data, only second variable is accessible outside of viewModel which is immutable
     private val _temperature = MutableLiveData<String>()
     val temperature: LiveData<String>
         get() = _temperature

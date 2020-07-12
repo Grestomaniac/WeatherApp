@@ -1,4 +1,4 @@
-package com.example.weatherapp.ui.main
+package com.example.weatherapp.ui.mainScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,22 @@ import androidx.fragment.app.viewModels
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.MainFragmentBinding
 
-class MainFragment : Fragment() {
+class MainScreenFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = MainScreenFragment()
     }
 
-    private val model: MainViewModel by viewModels()
+    //loading viewModel
+    private val modelScreen: MainScreenViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //binding data
         val binding: MainFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
 
-        binding.viewModel = model
+        binding.viewModel = modelScreen
         binding.lifecycleOwner = this
 
         return binding.root
