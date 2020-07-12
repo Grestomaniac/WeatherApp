@@ -1,4 +1,4 @@
-package com.example.weatherapp.ui.fullInfoScreen
+package com.example.weatherapp.ui.searchScreen
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,21 +9,23 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.weatherapp.R
-import com.example.weatherapp.databinding.FullInfoFragmentBinding
+import com.example.weatherapp.databinding.MainFragmentBinding
+import com.example.weatherapp.databinding.SearchLocalityFragmentBinding
+import com.example.weatherapp.ui.mainScreen.MainScreenViewModel
 
-class FullInfoFragment : Fragment() {
+class SearchLocalityFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FullInfoFragment()
+        fun newInstance() = SearchLocalityFragment()
     }
 
-    private val viewModel: FullInfoViewModel by viewModels()
+    private val viewModel: SearchLocalityViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FullInfoFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.full_info_fragment, container, false)
+        val binding: SearchLocalityFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.search_locality_fragment, container, false)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this

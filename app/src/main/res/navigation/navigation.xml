@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.weatherapp.ui.mainScreen.MainScreenFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_searchLocalityFragment"
+            app:destination="@id/searchLocalityFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_fullInfoFragment"
+            app:destination="@id/fullInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fullInfoFragment"
+        android:name="com.example.weatherapp.ui.fullInfoScreen.FullInfoFragment"
+        android:label="FullInfoFragment" />
+
+    <fragment
+        android:id="@+id/searchLocalityFragment"
+        android:name="com.example.weatherapp.ui.searchScreen.SearchLocalityFragment"
+        android:label="search_locality_fragment"
+        tools:layout="@layout/search_locality_fragment" />
 </navigation>

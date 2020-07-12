@@ -8,7 +8,7 @@
     </style>
 
     <style name="Temperature" parent="AppBaseStyle">
-        <item name="android:textSize">46sp</item>
+        <item name="android:textSize">55sp</item>
     </style>
 
     <style name="Locality" parent="AppBaseStyle">

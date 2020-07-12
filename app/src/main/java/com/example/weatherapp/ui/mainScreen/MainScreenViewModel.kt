@@ -30,9 +30,6 @@ class MainScreenViewModel : ViewModel() {
     val wind: LiveData<String>
         get() = _wind
 
-    fun onSearchButtonClick() {
-    }
-
     fun loadCity() {
 
     }

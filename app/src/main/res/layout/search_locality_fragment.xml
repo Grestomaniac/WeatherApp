@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.searchScreen.SearchLocalityFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.weatherapp.ui.fullInfoScreen.FullInfoViewModel" />
+            type="com.example.weatherapp.ui.searchScreen.SearchLocalityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
