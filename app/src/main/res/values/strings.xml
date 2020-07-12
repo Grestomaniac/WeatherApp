@@ -7,6 +7,6 @@
     <string name="uv_image">Рисунок ультрафиолетового излучения</string>
     <string name="wind_image">Рисунок ветра</string>
 
-    <string name="temperature_format">%s°</string>
-    <string name="humidity_format">%s%</string>
+    <string name="temperature_format">%1$s°</string>
+    <string name="humidity_format">%s%%</string>
 </resources>

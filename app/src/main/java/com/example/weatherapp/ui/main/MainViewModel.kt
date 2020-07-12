@@ -28,4 +28,12 @@ class MainViewModel : ViewModel() {
     private val _wind = MutableLiveData<String>()
     val wind: LiveData<String>
         get() = _wind
+
+    fun onSearchButtonClick() {
+    }
+
+    fun loadCity() {
+
+    }
+
 }
