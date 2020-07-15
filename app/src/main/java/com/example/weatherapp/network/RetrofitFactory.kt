@@ -1,7 +1,7 @@
 package com.example.weatherapp.network
 
 import com.example.weatherapp.BuildConfig
-import com.example.weatherapp.BuildConfig.WEATHER_API_KEY
+import com.example.weatherapp.WEATHER_API_KEY
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
