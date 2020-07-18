@@ -1,9 +1,9 @@
 package com.example.weatherapp.repository
 
+import android.util.Log
 import com.example.weatherapp.model.Forecast
-import com.example.weatherapp.network.Resource
-import com.example.weatherapp.network.ResponseHandler
-import com.example.weatherapp.network.WeatherApi
+import com.example.weatherapp.network.*
+import retrofit2.Retrofit
 import java.lang.Exception
 
 class WeatherRepository(
@@ -18,4 +18,18 @@ class WeatherRepository(
             responseHandler.handleException(e)
         }
     }
+}
+
+fun getWeatherRepository() = WeatherRepository(
+    provideWeatherApi(settings()),
+    ResponseHandler()
+)
+
+private fun settings(): Retrofit {
+    return provideRetrofit(
+        provideOkHttpClient(
+            AuthInterceptor(),
+            provideLoggingInterceptor()
+        )
+    )
 }
