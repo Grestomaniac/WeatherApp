@@ -28,8 +28,9 @@ class MainScreenFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
         binding.search.setOnClickListener { onSearchButtonClick(it) }
+        // TODO: add adapter for main recycler
+
 
         return binding.root
     }
