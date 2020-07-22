@@ -5,3 +5,5 @@ package com.example.weatherapp
     const val YakutskCity = "Yakutsk"
     const val MoscowCity = "Moscow"
     const val SpbCity = "Mshinskaya"
+    const val WEATHER_API_KEY = "bbfd6c4471e1680ab794d3f76f5dea60"
+    const val locationPermissionCode = 1000

@@ -32,16 +32,6 @@ android {
         }
     }
 
-    buildTypes.each {
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file("local.properties").newDataInputStream())
-        def weatherApiKey = properties.getProperty("weather_api_key", "")
-
-        it.buildConfigField 'String', "WEATHER_API_KEY", weatherApiKey
-
-        it.resValue 'string', "api_key", weatherApiKey
-    }
-
     lintOptions {
         abortOnError false
     }

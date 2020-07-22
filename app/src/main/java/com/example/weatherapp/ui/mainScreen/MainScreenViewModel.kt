@@ -8,7 +8,6 @@ import com.example.weatherapp.R
 import com.example.weatherapp.TemperatureUnit
 import com.example.weatherapp.YakutskCity
 import com.example.weatherapp.model.Forecast
-import com.example.weatherapp.network.ApiFactory
 import com.example.weatherapp.network.WeatherApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -51,13 +50,7 @@ class MainScreenViewModel : ViewModel() {
     }
 
     fun loadLocality(locality: String) {
-        val weatherService = ApiFactory.weatherHolderApi
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = weatherService.getWeather(locality, TemperatureUnit)
-            withContext(Dispatchers.Main){
-                fillMainData(response)
-            }
-        }
+
     }
 
     private fun fillMainData(response: Forecast, time: Int = 0) {
