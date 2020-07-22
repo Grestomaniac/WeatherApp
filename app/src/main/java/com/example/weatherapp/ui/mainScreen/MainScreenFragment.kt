@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.MainFragmentBinding
 
@@ -36,7 +38,7 @@ class MainScreenFragment : Fragment() {
 
     //navigating to searchScreen
     private fun onSearchButtonClick(v: View) {
-        Navigation.findNavController(v).navigate(R.id.action_mainFragment_to_searchLocalityFragment)
+        v.findNavController().navigate(R.id.action_mainFragment_to_searchLocalityFragment)
     }
 
 }

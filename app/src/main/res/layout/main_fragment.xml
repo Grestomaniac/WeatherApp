@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.weatherapp.ui.mainScreen.MainScreenViewModel" />
+            type="com.example.weatherapp.ui.mainScreen.MainScreenViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             style="@style/Locality"
+            android:text="@{viewModel.locality}"
             tools:text="Якутск"/>
 
         <ImageView
@@ -33,7 +34,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:contentDescription="@string/weather_image"
+            android:contentDescription="@string/search_image"
             android:src="@drawable/ic_search_black_24dp"
             app:layout_constraintBottom_toBottomOf="@+id/locality"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +66,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="10°" />
+                    tools:text="10°"/>
 
                 <TextView
                     android:id="@+id/description"
@@ -90,17 +91,18 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/temperature"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:imageResource="@{viewModel.getWeatherImageResource}"
                     tools:src="@drawable/sun_v2" />
 
                 <View
                     android:id="@+id/divider_top"
                     android:layout_width="0dp"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/dividerColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/description" />
+                    app:layout_constraintTop_toBottomOf="@+id/description"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/daily_weather_info"
@@ -112,7 +114,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider_top"
-                    tools:listitem="@layout/daily_info">
+                    tools:listitem="@layout/daily_info"
+                    tools:itemCount="7">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -143,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{viewModel.humidity}"
+                    android:text="@{@string/humidity_format(viewModel.humidity)}"
                     app:layout_constraintEnd_toEndOf="@+id/humidity_image"
                     app:layout_constraintStart_toStartOf="@+id/humidity_image"
                     app:layout_constraintTop_toBottomOf="@+id/humidity_image"
@@ -189,7 +192,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{@string/humidity_format(viewModel.wind)}"
+                    android:text="@{@string/wind_format(viewModel.wind)}"
                     app:layout_constraintEnd_toEndOf="@+id/wind_image"
                     app:layout_constraintStart_toStartOf="@+id/wind_image"
                     app:layout_constraintTop_toBottomOf="@+id/wind_image"

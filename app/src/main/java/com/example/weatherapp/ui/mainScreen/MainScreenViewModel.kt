@@ -1,8 +1,20 @@
 package com.example.weatherapp.ui.mainScreen
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.weatherapp.R
+import com.example.weatherapp.TemperatureUnit
+import com.example.weatherapp.YakutskCity
+import com.example.weatherapp.model.Forecast
+import com.example.weatherapp.network.ApiFactory
+import com.example.weatherapp.network.WeatherApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.math.roundToInt
 
 class MainScreenViewModel : ViewModel() {
     //live data, only second variable is accessible outside of viewModel which is immutable
@@ -30,8 +42,50 @@ class MainScreenViewModel : ViewModel() {
     val wind: LiveData<String>
         get() = _wind
 
-    fun loadCity() {
+    private val _weatherImageResource = MutableLiveData<Int>()
+    val weatherImageResource: LiveData<Int>
+        get() = _weatherImageResource
 
+    init {
+        loadLocality(YakutskCity)
+    }
+
+    fun loadLocality(locality: String) {
+        val weatherService = ApiFactory.weatherHolderApi
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = weatherService.getWeather(locality, TemperatureUnit)
+            withContext(Dispatchers.Main){
+                fillMainData(response)
+            }
+        }
+    }
+
+    private fun fillMainData(response: Forecast, time: Int = 0) {
+        _locality.value = response.city.name
+
+        val currentWeather = response.list[time]
+
+        _temperature.value = currentWeather.main.temp.roundToInt().toString()
+        _description.value = currentWeather.weather[0].main
+        _humidity.value = currentWeather.main.humidity.toString()
+        _ultraViolet.value = "normal"
+        _wind.value = currentWeather.wind.speed.roundToInt().toString()
+
+        _weatherImageResource.value = getWeatherImageResource(currentWeather.weather[0].icon)
+
+        Log.d("WEATHER_RESPONSE", "weather size is ${currentWeather.weather.size}")
+    }
+
+    private fun getWeatherImageResource(icon: String): Int {
+        return when (icon) {
+            "01d", "01n" -> R.drawable.sun_v2
+            "02d", "02n" -> R.drawable.cloudy_sunny_solid
+            "03d", "03n", "04d", "04n" -> R.drawable.cloudy_solid
+            "10d", "09d" -> R.drawable.rainy_solid
+            "11d" -> R.drawable.rain_with_thunder_solid
+
+            else -> R.drawable.sun_v2
+        }
     }
 
 }

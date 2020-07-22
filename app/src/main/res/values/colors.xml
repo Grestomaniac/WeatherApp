@@ -5,4 +5,5 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="dividerColor">#000000</color>
+    <color name="slightlyAccentedColor">#D3D3D3</color>
 </resources>

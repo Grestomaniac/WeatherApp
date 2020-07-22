@@ -6,7 +6,12 @@
     <string name="humidity_image">Рисунок влажности</string>
     <string name="uv_image">Рисунок ультрафиолетового излучения</string>
     <string name="wind_image">Рисунок ветра</string>
+    <string name="search_image">Рисунок поиска</string>
 
     <string name="temperature_format">%1$s°</string>
     <string name="humidity_format">%s%%</string>
+    <string name="wind_format">%s м/с</string>
+    <string name="delete_chosen_locality">Удалить выбранную местность</string>
+    <string name="clear_button">Очистить поле ввода</string>
+
 </resources>
