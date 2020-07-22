@@ -1,5 +1,8 @@
 package com.example.weatherapp.model
 
+import com.example.weatherapp.ui.mainScreen.recyclerview.models.DailyForecast
+import com.example.weatherapp.ui.mainScreen.recyclerview.models.HourlyForecast
+
 data class Forecast(
     val imageResource: Int,
     val city: City,
@@ -7,4 +10,26 @@ data class Forecast(
     val cod: String,
     val list: List<Day>,
     val message: Int
-)
+) {
+    fun getHourlyForecast(): ArrayList<HourlyForecast> {
+        val hourlyForecast = ArrayList<HourlyForecast>()
+        for (i in 1 until 8) {
+            list[i].apply {
+                hourlyForecast.add(
+                    HourlyForecast(weather[0].icon, dt_txt, main.temp)) }
+
+        }
+        return hourlyForecast
+    }
+
+    fun getDailyForecast(): ArrayList<DailyForecast> {
+        val dailyForecast = ArrayList<DailyForecast>()
+        for (i in 0 until 7) {
+            list[i*8].apply {
+                dailyForecast.add(
+                    DailyForecast(weather[0].icon, main.temp_min, main.temp_max)) }
+
+        }
+        return dailyForecast
+    }
+}

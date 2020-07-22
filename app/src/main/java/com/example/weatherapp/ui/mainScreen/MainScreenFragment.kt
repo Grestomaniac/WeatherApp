@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.MainFragmentBinding
+import com.example.weatherapp.ui.mainScreen.recyclerview.HourlyForecastAdapter
 
 class MainScreenFragment : Fragment() {
 
@@ -31,7 +32,10 @@ class MainScreenFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         binding.search.setOnClickListener { onSearchButtonClick(it) }
-        // TODO: add adapter for main recycler
+
+        val hourlyForecastAdapter = HourlyForecastAdapter()
+        binding.hourlyForecast.adapter = hourlyForecastAdapter
+
 
 
         return binding.root

@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{@string/temperature_format(viewModel.temperature)}"
+                    app:temperatureText="@{viewModel.temperature}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -85,49 +85,47 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
                     android:contentDescription="@string/weather_image"
-                    app:layout_constraintBottom_toTopOf="@+id/divider_top"
+                    app:weatherImage="@{viewModel.weatherImageResource}"
+                    app:layout_constraintBottom_toTopOf="@+id/hourlyForecast"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/temperature"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:imageResource="@{viewModel.getWeatherImageResource}"
                     tools:src="@drawable/sun_v2" />
 
-                <View
-                    android:id="@+id/divider_top"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/dividerColor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/description"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/daily_weather_info"
+                    android:id="@+id/hourlyForecast"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/description"
+                    tools:listitem="@layout/hourly_weather_layout"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dailyForecast"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
+
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider_top"
-                    tools:listitem="@layout/daily_info"
-                    tools:itemCount="7">
+                    app:layout_constraintTop_toBottomOf="@+id/hourlyForecast"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/daily_info">
 
                 </androidx.recyclerview.widget.RecyclerView>
-
-                <View
-                    android:id="@+id/divider_bottom"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/dividerColor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/daily_weather_info" />
 
                 <ImageView
                     android:id="@+id/humidity_image"
@@ -146,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{@string/humidity_format(viewModel.humidity)}"
+                    app:humidityText="@{viewModel.humidity}"
                     app:layout_constraintEnd_toEndOf="@+id/humidity_image"
                     app:layout_constraintStart_toStartOf="@+id/humidity_image"
                     app:layout_constraintTop_toBottomOf="@+id/humidity_image"
@@ -156,12 +154,11 @@
                     android:id="@+id/uv_image"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/uv_image"
                     android:src="@drawable/uv_solid"
                     app:layout_constraintEnd_toStartOf="@+id/wind_image"
                     app:layout_constraintStart_toEndOf="@+id/humidity_image"
-                    app:layout_constraintTop_toBottomOf="@+id/divider_bottom" />
+                    app:layout_constraintTop_toBottomOf="@+id/dailyForecast" />
 
                 <TextView
                     android:id="@+id/ultra_violet"
@@ -192,10 +189,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{@string/wind_format(viewModel.wind)}"
                     app:layout_constraintEnd_toEndOf="@+id/wind_image"
                     app:layout_constraintStart_toStartOf="@+id/wind_image"
                     app:layout_constraintTop_toBottomOf="@+id/wind_image"
+                    app:windText="@{viewModel.wind}"
                     tools:text="5 м/с" />
 
 
