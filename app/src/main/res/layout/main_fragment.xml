@@ -104,11 +104,14 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal"
+                    android:background="@drawable/background_with_dividers"
+
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/description"
+
                     tools:listitem="@layout/hourly_weather_layout"/>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -118,12 +121,15 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/recycler_view_item"
 
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/hourlyForecast"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
                     tools:itemCount="7"
-                    tools:listitem="@layout/daily_info">
+                    tools:listitem="@layout/daily_weather_layout">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -154,6 +160,7 @@
                     android:id="@+id/uv_image"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/uv_image"
                     android:src="@drawable/uv_solid"
                     app:layout_constraintEnd_toStartOf="@+id/wind_image"

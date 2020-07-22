@@ -79,6 +79,8 @@ class MainScreenViewModel : ViewModel() {
 
         _weatherImageResource.value = currentWeather.weather[0].icon
 
+        _hourlyForecastData.value = response.getHourlyForecast()
+        _dailyForecastData.value = response.getDailyForecast()
 
     }
 

@@ -25,9 +25,9 @@ data class Forecast(
     fun getDailyForecast(): ArrayList<DailyForecast> {
         val dailyForecast = ArrayList<DailyForecast>()
         for (i in 0 until 7) {
-            list[i*8].apply {
+            list[i*4].apply {
                 dailyForecast.add(
-                    DailyForecast(weather[0].icon, main.temp_min, main.temp_max)) }
+                    DailyForecast(weather[0].icon, dt_txt, main.temp_min, main.temp_max)) }
 
         }
         return dailyForecast

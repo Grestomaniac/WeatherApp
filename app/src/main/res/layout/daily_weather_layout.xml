@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="dailyForecast"
+            type="com.example.weatherapp.ui.mainScreen.recyclerview.models.DailyForecast" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toStartOf="@+id/weather_image"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:dayText="@{dailyForecast.time}"
+
+            style="@style/AppBaseStyle"
+            tools:text="Сегодня" />
+
+        <ImageView
+            android:id="@+id/weather_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/weather_image"
+
+            app:layout_constraintBottom_toBottomOf="@+id/day"
+            app:layout_constraintEnd_toStartOf="@+id/min_temperature"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/day"
+            app:layout_constraintTop_toTopOf="@+id/day"
+            app:weatherImage="@{dailyForecast.weatherIcon}"
+
+            tools:src="@drawable/sun_v2" />
+
+        <TextView
+            android:id="@+id/min_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toStartOf="@+id/max_temperature"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/weather_image"
+            app:layout_constraintTop_toTopOf="@+id/day"
+            app:temperatureText="@{dailyForecast.minTemperature}"
+
+            style="@style/AppBaseStyle"
+            tools:text="10°" />
+
+        <TextView
+            android:id="@+id/max_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/min_temperature"
+            app:layout_constraintTop_toTopOf="@+id/day"
+            app:temperatureText="@{dailyForecast.maxTemperature}"
+
+            style="@style/AppBaseStyle"
+            tools:text="15°" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
