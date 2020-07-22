@@ -1,4 +1,4 @@
-package com.example.weatherapp.ui.models
-
-data class Localities() {
-}
+//package com.example.weatherapp.ui.models
+//
+//data class Localities() {
+//}

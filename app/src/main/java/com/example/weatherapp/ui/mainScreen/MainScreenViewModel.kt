@@ -9,6 +9,7 @@ import com.example.weatherapp.TemperatureUnit
 import com.example.weatherapp.YakutskCity
 import com.example.weatherapp.model.Forecast
 import com.example.weatherapp.network.WeatherApi
+import com.example.weatherapp.repository.getWeatherRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,10 +51,21 @@ class MainScreenViewModel : ViewModel() {
     }
 
     fun loadLocality(locality: String) {
-
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = getWeatherRepository().getCurrentWeather(locality)
+            withContext(Dispatchers.Main) {
+                if (response.data == null) Log.d("dsd", "null")
+                fillMainData(response.data!!)
+            }
+        }
     }
 
     private fun fillMainData(response: Forecast, time: Int = 0) {
+        if (response == null) Log.d("abrakadabra", "response is null")
+        if (response.cod == null) Log.d("abrakadabra", "list is null")
+        if (response.city == null) Log.d("abrakadabra", "city is null")
+        if (response.city.name == null) Log.d("abrakadabra", "name is null")
+
         _locality.value = response.city.name
 
         val currentWeather = response.list[time]
