@@ -11,10 +11,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.MainFragmentBinding
+import com.example.weatherapp.model.Day
 import com.example.weatherapp.ui.mainScreen.recyclerview.DailyForecastAdapter
 import com.example.weatherapp.ui.mainScreen.recyclerview.HourlyForecastAdapter
+import com.example.weatherapp.ui.mainScreen.recyclerview.OnHourlyForecastClickListener
 
 class MainScreenFragment : Fragment() {
 
@@ -31,7 +34,7 @@ class MainScreenFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.search.setOnClickListener { onSearchButtonClick(it) }
 
-        val hourlyForecastAdapter = HourlyForecastAdapter()
+        val hourlyForecastAdapter = HourlyForecastAdapter(OnHourlyForecastClickListener { showDetailsOn(it) })
         binding.hourlyForecast.adapter = hourlyForecastAdapter
 
         viewModel.hourlyForecastData.observe(viewLifecycleOwner, Observer {
@@ -50,7 +53,12 @@ class MainScreenFragment : Fragment() {
 
     //navigating to searchScreen
     private fun onSearchButtonClick(v: View) {
-        v.findNavController().navigate(R.id.action_mainFragment_to_searchLocalityFragment)
+        v.findNavController().navigate(MainScreenFragmentDirections.actionMainFragmentToSearchLocalityFragment())
+    }
+
+    //navigating to fullInfo
+    private fun showDetailsOn(dayIndex: Int) {
+        findNavController().navigate(MainScreenFragmentDirections.actionMainFragmentToFullInfoFragment(dayIndex))
     }
 
 }

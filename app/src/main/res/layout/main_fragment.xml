@@ -66,8 +66,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="10°"
-                    app:hourText=""/>
+                    tools:text="10°"/>
 
                 <TextView
                     android:id="@+id/description"

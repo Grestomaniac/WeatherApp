@@ -82,8 +82,6 @@ class MainScreenViewModel : ViewModel() {
         _hourlyForecastData.value = response.getHourlyForecast()
         _dailyForecastData.value = response.getDailyForecast()
 
-        Log.d("abrakadabra", response.list[0].dt.toString())
-
     }
 
 }

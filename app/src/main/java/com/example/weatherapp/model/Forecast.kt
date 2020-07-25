@@ -16,7 +16,7 @@ data class Forecast(
         for (i in 1 until 8) {
             list[i].apply {
                 hourlyForecast.add(
-                    HourlyForecast(weather[0].icon, dt_txt, main.temp)) }
+                    HourlyForecast(weather[0].icon, dt_txt, main.temp, i)) }
 
         }
         return hourlyForecast
@@ -27,7 +27,7 @@ data class Forecast(
         for (i in 0 until 7) {
             list[i*4].apply {
                 dailyForecast.add(
-                    DailyForecast(weather[0].icon, dt_txt, main.temp_min, main.temp_max)) }
+                    DailyForecast(weather[0].icon, dt_txt, main.temp_min, main.temp_max, i)) }
 
         }
         return dailyForecast
