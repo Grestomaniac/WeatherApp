@@ -54,4 +54,5 @@
             tools:text="20°" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    
 </layout>

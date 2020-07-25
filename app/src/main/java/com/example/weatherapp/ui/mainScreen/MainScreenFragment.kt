@@ -18,10 +18,6 @@ import com.example.weatherapp.ui.mainScreen.recyclerview.HourlyForecastAdapter
 
 class MainScreenFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainScreenFragment()
-    }
-
     //loading viewModel
     private val viewModel: MainScreenViewModel by viewModels()
 

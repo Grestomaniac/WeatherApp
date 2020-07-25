@@ -41,6 +41,7 @@ fun TextView.setHumidity(humidity: Int) {
 @BindingAdapter("hourText")
 fun TextView.setHour(date: String) {
     text = date.subSequence(11 until 16)
+
 }
 
 @BindingAdapter("dayText")

@@ -61,5 +61,4 @@ class DailyForecastDiffCallback: DiffUtil.ItemCallback<DailyForecast>() {
         // true если эти два объекта имеют одинаковое содержимое
         return oldItem == newItem
     }
-
 }
