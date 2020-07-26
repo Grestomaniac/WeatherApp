@@ -10,7 +10,7 @@ import com.example.weatherapp.ui.mainScreen.recyclerview.models.DailyForecast
 
 // Адаптер наследуется от ListAdapter для автоматического обновления содержимого
 // Также ListAdapter содержит список данных в себе, так что не нужно объявлять для него переменную
-class DailyForecastAdapter: ListAdapter<DailyForecast, DailyForecastAdapter.ViewHolder>(DailyForecastDiffCallback()) {
+class DailyForecastAdapter(private val clickListener: OnClickListener): ListAdapter<DailyForecast, DailyForecastAdapter.ViewHolder>(DailyForecastDiffCallback()) {
 
     // Функция которая вызывается адаптером для создания нового ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,6 +31,7 @@ class DailyForecastAdapter: ListAdapter<DailyForecast, DailyForecastAdapter.View
         fun bind(item: DailyForecast) {
             // данные передаются для связывания в лэйаут
             binding.dailyForecast = item
+
             // Вроде бы нужен для анимации
             binding.executePendingBindings()
         }

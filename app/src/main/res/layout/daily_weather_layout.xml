@@ -7,12 +7,17 @@
         <variable
             name="dailyForecast"
             type="com.example.weatherapp.ui.mainScreen.recyclerview.models.DailyForecast" />
+
+        <variable
+            name="clickListener"
+            type="com.example.weatherapp.ui.mainScreen.recyclerview.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:onClick="@{() -> clickListener.onClickItem(dailyForecast.dayIndex)}">
 
         <TextView
             android:id="@+id/day"

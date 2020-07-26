@@ -10,7 +10,7 @@
 
         <variable
             name="clickListener"
-            type="com.example.weatherapp.ui.mainScreen.recyclerview.OnHourlyForecastClickListener" />
+            type="com.example.weatherapp.ui.mainScreen.recyclerview.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

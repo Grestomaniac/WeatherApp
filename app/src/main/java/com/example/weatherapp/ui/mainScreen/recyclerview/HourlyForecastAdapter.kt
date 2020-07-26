@@ -6,12 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.databinding.HourlyWeatherLayoutBinding
-import com.example.weatherapp.model.Day
 import com.example.weatherapp.ui.mainScreen.recyclerview.models.HourlyForecast
 
 // Адаптер наследуется от ListAdapter для автоматического обновления содержимого
 // Также ListAdapter содержит список данных в себе, так что не нужно объявлять для него переменную
-class HourlyForecastAdapter(private val clickListener: OnHourlyForecastClickListener): ListAdapter<HourlyForecast, HourlyForecastAdapter.ViewHolder>(HourlyForecastDiffCallback()) {
+class HourlyForecastAdapter(private val clickListener: OnClickListener): ListAdapter<HourlyForecast, HourlyForecastAdapter.ViewHolder>(HourlyForecastDiffCallback()) {
 
     // Функция которая вызывается адаптером для создания нового ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,7 +28,7 @@ class HourlyForecastAdapter(private val clickListener: OnHourlyForecastClickList
     class ViewHolder private constructor(private val binding: HourlyWeatherLayoutBinding): RecyclerView.ViewHolder(binding.root) {
 
         // Для инкапсуляции связывание происходит внутри объекта, а не в адаптере
-        fun bind(item: HourlyForecast, clickListener: OnHourlyForecastClickListener) {
+        fun bind(item: HourlyForecast, clickListener: OnClickListener) {
             // данные передаются для связывания в лэйаут
             binding.hourlyWeather = item
             binding.clickListener = clickListener
@@ -64,8 +63,4 @@ class HourlyForecastDiffCallback: DiffUtil.ItemCallback<HourlyForecast>() {
         return oldItem == newItem
     }
 
-}
-
-class OnHourlyForecastClickListener(val clickListener: (dayIndex: Int) -> Unit) {
-    fun onClickItem(dayIndex: Int) = clickListener(dayIndex)
 }

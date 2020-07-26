@@ -60,7 +60,6 @@ class MainScreenViewModel : ViewModel() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = getWeatherRepository().getCurrentWeather(locality)
             withContext(Dispatchers.Main) {
-                if (response.data == null) Log.d("dsd", "null")
                 fillMainData(response.data!!)
             }
         }
